@@ -1,0 +1,49 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.6.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+}
+
+group = 'com.jvoq'
+//cambiamos la version porque ya la concluimos
+version = '1.0'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	/*implementando spring data*/
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	/*implementando spring data*/
+
+	/*posgres solo en tiempo de ejecucion*/
+	runtimeOnly 'org.postgresql:postgresql'
+	/*posgres solo en tiempo de ejecucion*/
+
+	/*mapstruct*/
+	implementation 'org.mapstruct:mapstruct:1.4.1.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.1.Final'
+	/*mapstruct*/
+//siempre pon grupo y nombre, pero con swagger se agrego version
+	/*Swagger*/
+	implementation 'io.springfox:springfox-swagger2:2.9.2'
+//este es para verlo en una web diseño ui la api
+	implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+	/*Swagger*/
+	/*spring boot security, sin version porque gradle gestiona eso*/
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	/*spring boot security, sin version porque gradle gestiona eso*/
+   /*JWT para la seguridad en el header url*/
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+   /*JWT para la seguridad en el header url*/
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
